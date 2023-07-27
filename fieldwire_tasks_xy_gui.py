@@ -1,6 +1,6 @@
-import fitz  # PyMuPDF
+import fitz  # PyMuPDF library
 import pandas as pd
-import PySimpleGUI as sg
+import PySimpleGUI as sg #library for the gui.
 import os
 import time
 
@@ -15,7 +15,7 @@ layout = [
 
 # Create the window from the layout
 window = sg.Window('File Selection', layout)
-# Define the column headers as a list
+# Define the column headers as a list which matches the fieldwire import tasks table
 column_headers = ['Title','Status','Category','Assignee email','Start date','End date','Plan','X pos(%)','Y pos(%)']
 
 # Event loop to process events and get input from the GUI
@@ -37,7 +37,7 @@ while True:
     if event == 'Run':
         try:
             Ref_df = pd.read_csv(file1_path, encoding='latin-1') # Load the CSV file into a DataFrame
-            Output_df = pd.DataFrame(columns=column_headers)
+            Output_df = pd.DataFrame(columns=column_headers) # crea
 
             # open the document
             doc = fitz.open(file2_path)
@@ -55,13 +55,13 @@ while True:
                 print(page_nm, width, height)
                 window['-OUTPUT-'].update(f'Computing X-Y Locations of page {page_nm}')
                 window.refresh() # Force immediate GUI window update
-                if page_nm > 1: # >1 skips the front page
+                if page_nm > 1: # >1 skips the front page as don't want to create any tasks there
                     for system in Ref_df.iloc[:, 0]:
                         text_instances = page.search_for(system)
                         for i, inst in enumerate(text_instances):
                             x = round(((inst.x0 / width)+(inst.x1 / width))*50,0) # normalize coordinates by dividing by width and height
                             y = round(((inst.y0 / height)+(inst.y1 / height))*50,0)
-                            if x > 77 and y > 85: #using and statement to remove matching text that is in the document info section
+                            if x > 77 and y > 85: #using if statement to remove matching text that is in the titlte block section of the drawing
                                 pass
                             else:
                                 name.append(pd.Series(f"{system}_{i}"))
@@ -70,7 +70,7 @@ while True:
                                 sheet.append(pd.Series(f"{filename} - {page_nm}"))
                 else:
                     pass
-            Output_df['Title'] = pd.concat(name, ignore_index=True)
+            Output_df['Title'] = pd.concat(name, ignore_index=True) #add the calculated locations to the output dataframe
             Output_df['Plan'] = pd.concat(sheet, ignore_index=True)
             Output_df['X pos(%)'] = pd.concat(x_pos, ignore_index=True)
             Output_df['Y pos(%)'] = pd.concat(y_pos, ignore_index=True)
