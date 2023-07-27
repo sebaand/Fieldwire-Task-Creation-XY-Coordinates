@@ -8,7 +8,7 @@ Instructions for the user:
 - The current executable skips the first page as it assumes that the front page  requires no associated tasks.
 - The current executable doesn't extract information for the bottom right corner of the page, as it assumes that's the location of the title block.
 
-Any questions please feel free to reach out to the author: andrea.sebastio@hilti.com
+Any questions please feel free to reach out to the author: andreasebastio014@gmail.com
 
 Also a special thanks to https://pngtree.com/freepng/initial-letter-xy-logo-template-design_3579444.html for providing the png 
 for the executable. 
