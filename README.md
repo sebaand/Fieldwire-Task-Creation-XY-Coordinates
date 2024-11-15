@@ -10,7 +10,7 @@ Information for proper use:
 - Currently the plan name that is automatically generated is in the format {file_name} - {page number}. Optimal workflow assumes you first upload the pdf file to fieldwire and revert to page number for the filename when importing the plans. Then you import the tasks by copying the content of the output excel file into the import tasks tab of fieldwire. After having imported the tasks you can scan the title blocks. 
 - Note that the import tasks tab of Fieldwire is limited to import 500 tasks at a time, so if you have more than 500 tasks to import you must do so in multiple separate imports.
 
-Any questions please feel free to reach out to the your hilti representative.  Note this program is not an official Hilti product and is offered as a contribution to the open-source community and neither the author nor the Hilti Group and it's affiliated companies assume any liabilty associated to the output of the code or any associated use. 
+Note this program is not an official Hilti product and is offered as a contribution to the open-source community and neither the author nor the Hilti Group and it's affiliated companies assume any liabilty associated to the output of the code or any associated use. 
 
 Also a special thanks to <a href='https://pngtree.com/so/Initial'>Initial png from pngtree.com/</a> for providing the png 
 for the executable icon. 
